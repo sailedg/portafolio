@@ -10,7 +10,7 @@ function clickHandler(e){
     e.preventDefault();
 }
 
-
+//Show message Js
 let inputJs = document.querySelector('.input-js > span');
 let memory = inputJs.innerText;
 inputJs.innerHTML = "¿Quieres ver?";
@@ -28,7 +28,7 @@ btnJs.addEventListener('click', () =>{
 })
 
 
-let showInfo =setInterval(()=>{
+const showInfo =setInterval(()=>{
     if(statusValue  == 0){
         inputJs.innerHTML = "¿Quieres ver?";
         statusValue  = 1;
@@ -43,14 +43,26 @@ let showInfo =setInterval(()=>{
 }, 1500)
 
 
+//Clipboard
 let btnCopy = document.querySelector('.box-copy');
 let textToCopy = document.querySelector('.email-contact > span');
 
 btnCopy.addEventListener('click', () => {
+        clearClipBoard();
+        
+        btnCopy.classList.remove('copy-active');
+        btnCopy.classList.add('copy-off');
+    
+        navigator.clipboard.writeText(textToCopy.innerText);
 
-    btnCopy.classList.remove('copy-active');
-    btnCopy.classList.add('copy-off');
-
-    navigator.clipboard.writeText(textToCopy.innerText);
 })
 
+function clearClipBoard(){
+    const clearInput =setInterval(()=>{
+        if(btnCopy.className === 'box-copy copy-off'){
+            btnCopy.classList.add('copy-active');
+            btnCopy.classList.remove('copy-off');
+        }
+        clearInterval(clearInput);
+    }, 3500)
+}

@@ -209,6 +209,7 @@ footer .copy-active .copyOff{
 }
 footer .copy-off .copyOn{
     display: block;
+    background: #3c3c3c;
 }
 footer .box-copy{
     margin-bottom: 4rem;
