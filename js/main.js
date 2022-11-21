@@ -57,6 +57,8 @@ btnCopy.addEventListener('click', () => {
 
 })
 
+
+
 function clearClipBoard(){
     const clearInput =setInterval(()=>{
         if(btnCopy.className === 'box-copy copy-off'){

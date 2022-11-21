@@ -116,7 +116,10 @@ header{
 .skill .input-active span:nth-child(2){
     left: 106%;
 }
-.skill h4{color: var(--second-text-color)}
+.skill h3{
+    font-size: 1.6rem;
+    color: var(--second-text-color)
+}
 .skill .second-point{
     display: flex;
     justify-content: center;
