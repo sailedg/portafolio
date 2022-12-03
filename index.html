@@ -29,6 +29,7 @@
             /*--main-text-color: #1E0E62;*/
             --main-text-color: #fff;
             --second-text-color: #1E0E62;
+            --mark-text-color: #e1d000;
         }
         h1, h2, h3{
             margin: 0 0 4rem 0;
@@ -52,10 +53,12 @@
         header, section, footer{transition: all .4s ease;}
         main{padding-top: 72px;}
         section{ padding: 4rem 8rem;}
+        .none-clic{user-select: none;}
         .subtitle{
             font-size: 2.2rem;
             font-weight: 500;
         }
+        .subtitle span{color: var(--mark-text-color);}
 
     </style>
     <link rel="stylesheet" href="css/styles.css">
@@ -64,7 +67,7 @@
 <body>
     <header>
         <div class="title-logo">
-            <a href="javascript:void(0)"><h1>Portafolio</h1></a>
+            <a href="/"><h1>Portafolio</h1></a>
         </div>
         <div class="cta-contact-primary">
             <a class="scroll-btn" href="#emailSection">Contacto</a>
@@ -74,7 +77,16 @@
         <section class="about-me">
             <div class="box-info">
                 <h2>Hola, <span>soy Elias.</span> <br> Front End Developer Jr </h2>
-                <P class="subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <P class="subtitle">
+                    Soy estudiante autodidacta, con 2 años ya aplicando los conocimientos adquiridos en diferentes proyectos en el lado del frontend. <br><br>
+                    Actualmente busco un lugar donde pueda creecer más de lo que lo he hecho a mi ritmo y lograr metas mas altas.
+
+                </p>
+                <div class="cta-profile">
+                    <a href="assets/prueba hola.pdf" download target="blank">Descargar CV</a>
+                    <a class="scroll-btn" href="#emailSection">Conversemos</a>
+
+                </div>
             </div>
             <div class="box-img">
                 <picture>
@@ -86,7 +98,7 @@
         <section class="skill bg-white">
             <div class="box-title">
                 <h2>Mis Habilidades</h2>
-                <p class="subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p class="subtitle">Me gusta entender el problema más allá de simplemente darle una solución, para hacerlo lo más óptimo e idóneo posible. A través de la filosofía Clean Code.</p>
             </div>
             <div class="box-point">
                 <div class="point-skill">
@@ -114,17 +126,27 @@
                     <div class="input-perc input-js"><span>60%</span><span></span></div>
                 </div>
             </div>
-            <div class="box-second-point">
-                <h4>Conocimientos Afines</h4>
-                <div class="second-point">
-                    <div class="second-point-img">
-                        <img src="img/bootstrap.png" width="36" height="36" alt="logo bootstrap">
+            <div class="box-second">
+                <div class="box-second-point">
+                    <h4>Conocimientos Adquiridos</h4>
+                    <div class="second-point">
+                        <div class="second-point-img">
+                            <img src="img/bootstrap.png" width="36" height="36" alt="logo bootstrap">
+                        </div>
+                        <div class="second-point-img">
+                            <img src="img/illustrator.png" width="36" height="36" alt="logo illustrator">
+                        </div>
+                        <div class="second-point-img">
+                            <img src="img/figma.png" width="36" height="36" alt="logo figma">
+                        </div>
                     </div>
-                    <div class="second-point-img">
-                        <img src="img/illustrator.png" width="36" height="36" alt="logo illustrator">
-                    </div>
-                    <div class="second-point-img">
-                        <img src="img/figma.png" width="36" height="36" alt="logo figma">
+                </div>
+                <div class="box-second-point">
+                    <h4>En Aprendizaje</h4>
+                    <div class="second-point">
+                        <div class="second-point-img">
+                            <img src="img/angular-icon.png" width="36" height="36" alt="logo bootstrap">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,7 +154,7 @@
         <section class="exp">
             <div class="box-title">
                 <h2>Mi Experiencia</h2>
-                <p class="subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p class="subtitle">Hasta el momento he trabajado en <span>Maquetación Web</span>, <span>Optimización de Páginas Web</span> para un óptimo rendimiento en Velocidad y SEO, <span>Rediseños de Páginas Web.</span></p>
                 <div class="box-btn">
                     <a href="https://github.com/sailedg" target="_blank" class="cta-exp">
                         <svg aria-hidden="true" class="" height="25" width="25" version="1.1" viewBox="0 0 16 16" >
@@ -144,58 +166,64 @@
             </div>
             <div class="box-preview-exp">
                 <div class="card-exp">
-                    <a href="javascript:void(0)">
-                        <div class="box-img-exp">
-                        <img src="img/preview.webp" alt="proyect">
+                    <div>
+                        <picture>
+                            <source type="image/webp" srcset="img/preview.webp">
+                            <img src="img/preview.jpg" alt="imagen de proyecto" width="380" height="285" loading="lazy">
+                        </picture>
+                        <p class="title">Proyecto Lorem</p>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
                     </div>
-                    <p class="title">Proyecto Lorem</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
-                    </a>
                 </div>
                 <div class="card-exp">
-                    <a href="javascript:void(0)">
-                        <div class="box-img-exp">
-                        <img src="img/preview.webp" alt="proyect">
+                    <div>
+                        <picture>
+                            <source type="image/webp" srcset="img/preview.webp">
+                            <img src="img/preview.jpg" alt="imagen de proyecto" width="380" height="285" loading="lazy">
+                        </picture>
+                        <p class="title">Proyecto Lorem</p>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
                     </div>
-                    <p class="title">Proyecto Lorem</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
-                    </a>
                 </div>
                 <div class="card-exp">
-                    <a href="javascript:void(0)">
-                        <div class="box-img-exp">
-                        <img src="img/preview.webp" alt="proyect">
+                    <div>
+                        <picture>
+                            <source type="image/webp" srcset="img/preview.webp">
+                            <img src="img/preview.jpg" alt="imagen de proyecto" width="380" height="285" loading="lazy">
+                        </picture>
+                        <p class="title">Proyecto Lorem</p>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
                     </div>
-                    <p class="title">Proyecto Lorem</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
-                    </a>
                 </div>
                 <div class="card-exp">
-                    <a href="javascript:void(0)">
-                        <div class="box-img-exp">
-                        <img src="img/preview.webp" alt="proyect">
+                    <div>
+                        <picture>
+                            <source type="image/webp" srcset="img/preview.webp">
+                            <img src="img/preview.jpg" alt="imagen de proyecto" width="380" height="285" loading="lazy">
+                        </picture>
+                        <p class="title">Proyecto Lorem</p>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
                     </div>
-                    <p class="title">Proyecto Lorem</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
-                    </a>
                 </div>
                 <div class="card-exp">
-                    <a href="javascript:void(0)">
-                        <div class="box-img-exp">
-                        <img src="img/preview.webp" alt="proyect">
+                    <div>
+                        <picture>
+                            <source type="image/webp" srcset="img/preview.webp">
+                            <img src="img/preview.jpg" alt="imagen de proyecto" width="380" height="285" loading="lazy">
+                        </picture>
+                        <p class="title">Proyecto Lorem</p>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
                     </div>
-                    <p class="title">Proyecto Lorem</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
-                    </a>
                 </div>
                 <div class="card-exp">
-                    <a href="javascript:void(0)">
-                        <div class="box-img-exp">
-                        <img src="img/preview.webp" alt="proyect">
+                    <div>
+                        <picture>
+                            <source type="image/webp" srcset="img/preview.webp">
+                            <img src="img/preview.jpg" alt="imagen de proyecto" width="380" height="285" loading="lazy">
+                        </picture>
+                        <p class="title">Proyecto Lorem</p>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
                     </div>
-                    <p class="title">Proyecto Lorem</p>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos qui fugiat magnam reiciendis.</p>
-                    </a>
                 </div>
             </div>
         </section>
@@ -230,7 +258,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0)" aria-label=="Ir a instagram">
+                <a href="https://www.instagram.com" class="none-clic" aria-label="Ir a instagram">
                     <svg aria-hidden="true"  role="img" aria-labelledby="logo instagram" class="icon-footer icon-instagram" width="40" height="40"viewBox="-3 -3 22 22" style="background: #fff; border-radius:50%;"> 
                         <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" fill="#000"></path> 
                     </svg>

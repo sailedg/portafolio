@@ -1,19 +1,22 @@
-let btnScroll = document.querySelector('.scroll-btn');
+let btnScroll = document.querySelectorAll('.scroll-btn');
 
 //Scroll smooth and default url
-btnScroll.addEventListener('click', clickHandler)
-function clickHandler(e){
-    const href = this.getAttribute("href")
-    const itemHTML = document.querySelector(href); 
-    let moveTo = itemHTML.offsetTop; 
-    window.scrollTo({ top: moveTo, behavior: "smooth" }) 
-    e.preventDefault();
-}
+btnScroll.forEach(ctaScroll => {
+    ctaScroll.addEventListener('click', clickHandler)
+        function clickHandler(e){
+        const href = this.getAttribute("href")
+        const itemHTML = document.querySelector(href); 
+        let moveTo = itemHTML.offsetTop; 
+        window.scrollTo({ top: moveTo, behavior: "smooth" }) 
+        e.preventDefault();
+    }
+});
 
 //Show message Js
 let inputJs = document.querySelector('.input-js > span');
 let memory = inputJs.innerText;
-inputJs.innerHTML = "¿Quieres ver?";
+let messageBox= "¿Quieres ver?"
+inputJs.innerHTML = messageBox;
 
 let btnJs = inputJs.parentElement;
 let statusValue = 0;
@@ -27,10 +30,9 @@ btnJs.addEventListener('click', () =>{
     });
 })
 
-
 const showInfo =setInterval(()=>{
     if(statusValue  == 0){
-        inputJs.innerHTML = "¿Quieres ver?";
+        inputJs.innerHTML = messageBox;
         statusValue  = 1;
     }
     else if(statusValue  == 2){

@@ -41,11 +41,27 @@ header{
     align-items: center;
    
 }
+.about-me .subtitle{margin-bottom: 4rem;}
 .about-me .box-info{
     padding-right: 8rem;
 }
+.about-me .cta-profile a{
+    border-radius: 10rem;
+    border: 1px solid;
+    padding: 1rem 2rem;
+    margin-right: 3rem;
+}
+.about-me .cta-profile a:nth-child(1){
+    border-color: var(--mark-text-color);
+}
+.about-me .cta-profile a:nth-child(2){
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+    
 .about-me h2 span{
-    color: #e1d000;
+    color: var(--mark-text-color);
     position: relative;
 }
 .about-me h2 span:before{ 
@@ -54,7 +70,7 @@ header{
     width: 100%;
     height: 4px;
     bottom: 0;
-    background: #e1d000;
+    background: var(--mark-text-color);
 }
 .about-me .box-img{padding: 3rem;}
 .about-me .box-img img{
@@ -128,7 +144,10 @@ header{
     margin: 0 2rem;
     max-width: 36px;
  }
-
+.box-second{
+    display: flex;
+    justify-content: space-around;
+}
 
 .exp .box-preview-exp{
     display: grid;
@@ -144,12 +163,12 @@ header{
     padding: 1rem 2rem;
     border-radius: 10rem;
     border: none;
-    background: #e1d000;
+    background: var(--mark-text-color);
     color: #000;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all .3s ease-in-out;
-    border: 2px solid #e1d000;
+    border: 2px solid var(--mark-text-color);
     display: flex;
     align-items: flex-end;
 }
@@ -172,10 +191,9 @@ header{
     color: var(--main-text-color);
     margin-bottom: 0;
     font-size: 2.2rem;
-    text-decoration: underline 3px #e1d000;
+    text-decoration: underline 3px var(--mark-text-color);
 }
 .exp .description{margin-top: 0.7rem;}
-.exp .card-exp a{display: block;}
 .exp .card-exp img {
     width: 100%;
     height: 100%;
@@ -200,7 +218,7 @@ footer .email-contact{
     margin-top: 0.6rem;
     font-size: 4rem;
     font-weight: 600;
-    color: #e1d000;
+    color: var(--mark-text-color);
 }
 footer .box-contact{
     justify-content: center;
@@ -241,12 +259,12 @@ footer ul{
 footer ul li{margin: 0 1rem;}
 footer .icon-footer, footer path{transition: all .6s ease-in-out;}
 footer ul li:nth-child(1) .icon-footer:hover path {
-    fill: #e1d000 !important;
+    fill: var(--mark-text-color) !important;
 }
 
 footer ul li:nth-child(2) .icon-footer:hover,
 footer ul li:nth-child(3) .icon-footer:hover {
-    background: #e1d000 !important;
+    background: var(--mark-text-color) !important;
 }
 
 /**RESPONSIVE**/
