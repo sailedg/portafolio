@@ -45,6 +45,7 @@ header{
 .about-me .box-info{
     padding-right: 8rem;
 }
+.about-me .cta-profile{display: flex;}
 .about-me .cta-profile a{
     border-radius: 10rem;
     border: 1px solid;
@@ -379,7 +380,19 @@ footer ul li:nth-child(3) .icon-footer:hover {
         margin-right: 25%;
     }
 }
-
+@media (max-width: 451px){
+    .about-me .cta-profile{
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
+    }
+    
+    .about-me .cta-profile a{
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+    }
+    
+}
 @media (max-width: 416px) { 
     .about-me .box-info {
         padding-right: 0;
