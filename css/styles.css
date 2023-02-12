@@ -83,7 +83,7 @@ header{
 .skill{
     text-align: center;
 }
-.skill p, .skill h2{
+.skill p, .skill h2, .skill li{
     color: var(--second-text-color);
 }
 .skill .box-point{
@@ -119,27 +119,36 @@ header{
     border-radius: 16px;
     cursor: pointer;
     user-select: none;
+    padding: 0.6rem 0;
 }
 .skill .input-perc span:nth-child(2){
     width: 14%;
     position: absolute;
-    height: 340%;
+    height: 1000%;
     background: linear-gradient(275deg, #ffffff, #027ec400);
     left: -100%;
-    top: -23px;
+    top: -100px;
     transform: rotateZ(45deg);
     transition: all .6s;
 }
 .skill .input-active span:nth-child(2){
     left: 106%;
 }
-.skill h3{
-    font-size: 1.6rem;
+.skill h3, .skill h4{
+    font-size: 2rem;
     color: var(--second-text-color)
+}
+.skill h4{
+    font-size: 1.2em;
 }
 .skill .second-point{
     display: flex;
     justify-content: center;
+}
+.skill .second-point li{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
 }
 .skill .second-point img{
     margin: 0 2rem;
