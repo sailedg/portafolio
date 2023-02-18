@@ -46,7 +46,6 @@ header{
 }
 .about-me .subtitle{
     margin-bottom: 4rem;
-    text-align: justify;
 }
 .about-me .cta-profile{display: flex;}
 .about-me .cta-profile a{
@@ -89,7 +88,7 @@ header{
     gap: 5rem;
 }
 .skill img{
-    width: 100%;
+    width: auto;
     max-width: 50px;
     margin: auto;
     display: block;
@@ -130,11 +129,11 @@ header{
 .skill .input-active span:nth-child(2){
     left: 106%;
 }
-.skill h3, .skill h4{
+.skill h3, .skill .box-second h4{
     font-size: 2rem;
     color: var(--second-text-color)
 }
-.skill h4{
+.skill .box-second h4{
     font-size: 1.2em;
 }
 .skill .second-point{
@@ -145,10 +144,10 @@ header{
     display: flex;
     align-items: center;
     margin: 1rem 0;
+    gap: 1rem;
 }
-.skill .second-point img{
-    margin: 0 2rem;
-    max-width: 36px;
+.skill .second-point span{
+    text-align: left;
  }
 .box-second{
     display: flex;
@@ -212,7 +211,7 @@ header{
 
 footer{
     text-align: center;
-    padding: 9rem 0;
+    padding: 9rem 1rem;
 }
 footer .title-footer{
     font-size: 5.8rem;
@@ -231,16 +230,18 @@ footer .box-contact{
     display: flex;
     align-items: center;
 }
+footer .box-copy div{
+    gap: 1rem;
+    font-size: 1.8rem;
+}
 footer .copy-active .copyOff{
-    display: block;
+    display: flex;   
 }
 footer .copy-off .copyOn{
-    display: block;
+    display: flex;
     background: #3c3c3c;
 }
 footer .box-copy{
-    margin-bottom: 4rem;
-    margin-top: 1.6rem;
     margin-left: 2rem;
     position: relative;
     cursor: pointer;
@@ -273,12 +274,16 @@ footer ul li:nth-child(3) .icon-footer:hover {
     background: var(--mark-text-color) !important;
 }
 
+.skill .input-perc, footer .box-copy, footer ul li, .exp .box-btn, .about-me .cta-profile a{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+
 /**RESPONSIVE**/
 
 
-
  @media (max-width: 1200px) { 
-    header{padding: 2.3rem 5rem}
+    header{padding: 1.3rem 2.5rem}
     section{
         padding: 4rem 5rem;
     }
@@ -301,7 +306,6 @@ footer ul li:nth-child(3) .icon-footer:hover {
     h1, h2, h3{
         margin: 0 0 2rem 0;
     }
-
     .about-me{
         grid-template-columns: 1fr;
     }
@@ -343,28 +347,33 @@ footer ul li:nth-child(3) .icon-footer:hover {
 
     #emailSection p{
         font-size: 2.3rem;
+        margin-bottom: 0.5rem;
     }
     footer .email-contact{
         font-size: 3rem;
+    }
+    footer .copyOff, footer .copyOn{
+        position: initial;
     }
     footer .box-contact{
         align-items: center;
         flex-direction: column;
     }
     footer .box-copy{
-        margin-left: 0;
-        margin-right: 6rem;
+        margin: 1rem 0 4rem 0;
     }
-
     .box-second{gap: 4rem;}
 }
 
 @media (max-width: 576px) { 
     h1, h2, h3 {
-        font-size: 3rem;
+        font-size: 2.1rem;
     }
-    .subtitle {
-        font-size: 1.8rem;
+    .subtitle, .box-point .point-skill p {
+        font-size: 1.4rem;
+    }
+    .skill h3, .skill .box-second h4{
+        font-size: 1.5rem !important;
     }
     .box-title {
         padding: 0 0;
@@ -391,6 +400,9 @@ footer ul li:nth-child(3) .icon-footer:hover {
     .skill .point-skill:nth-child(3) .input-perc{
         margin-left: 25%;
         margin-right: 25%;
+    }
+    .about-me .box-img{
+        padding: 0;
     }
 }
 @media (max-width: 451px){
