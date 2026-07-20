@@ -84,10 +84,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
-    { media: "(prefers-color-scheme: light)", color: "#F7F7F5" },
-  ],
+  themeColor: "#0A0A0A",
   colorScheme: "dark light",
   // Deja que la página llegue hasta el borde real de la pantalla, así el fondo
   // de la tab bar móvil cubre la safe area de abajo (si no, el inset queda en 0).
@@ -120,17 +117,15 @@ function buildJsonLd(jobTitle: string) {
   return [personJsonLd, websiteJsonLd];
 }
 
-// Solo para la primera visita (todavía sin cookie "theme"): resuelve la
-// preferencia del sistema y guarda cookie + localStorage. A partir de ahí el
-// tema se renderiza desde el server leyendo la cookie, sin parpadeo.
+// Primera visita (sin cookie "theme"): fija el tema oscuro. A partir de ahí el
+// server lee la cookie y renderiza el tema elegido, sin parpadeo.
 const themeInitScript = `
 (function () {
   try {
     if (!document.cookie.includes("theme=")) {
-      var theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-      document.documentElement.dataset.theme = theme;
-      document.cookie = "theme=" + theme + "; path=/; max-age=31536000; SameSite=Lax";
-      localStorage.setItem("theme", theme);
+      document.documentElement.dataset.theme = "dark";
+      document.cookie = "theme=dark; path=/; max-age=31536000; SameSite=Lax";
+      localStorage.setItem("theme", "dark");
     }
   } catch (e) {}
 })();
