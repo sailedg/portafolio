@@ -65,14 +65,19 @@
   @apply mb-1.5 block text-sm text-text-secondary;
 }
 
-/* El borde de acento acompaña al foco del mouse; el anillo de :focus-visible de
-   globals.css es el que marca la posición al navegar con teclado. */
 .contact__input {
-  @apply w-full rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent;
+  @apply w-full rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text-primary placeholder:text-text-muted;
 }
 
 .contact__textarea {
-  @apply w-full resize-none rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent;
+  @apply w-full resize-none rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text-primary placeholder:text-text-muted;
+}
+
+/* Sin separación: el anillo de foco queda pegado al borde del campo y se lee
+   como un solo trazo, no como dos bordes. */
+.contact__input:focus-visible,
+.contact__textarea:focus-visible {
+  outline-offset: 0;
 }
 
 /* Campo rechazado por el servidor: borde rojo además del mensaje de error. */
