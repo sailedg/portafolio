@@ -1,0 +1,151 @@
+@reference "../../app/globals.css";
+
+.trigger {
+  @apply inline-flex cursor-pointer items-center gap-1.5 text-sm font-semibold text-accent-text transition-colors hover:underline;
+}
+
+.overlay {
+  @apply fixed inset-0 z-[100] flex items-center justify-center bg-bg/80 p-4 backdrop-blur-sm;
+}
+
+.panel {
+  @apply relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-border bg-bg-elevated p-6 sm:p-8;
+}
+
+.close-button {
+  @apply absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-secondary hover:border-accent hover:text-text-primary;
+  transition:
+    color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.close-button:active {
+  transform: scale(0.9);
+  transition-duration: 0.1s;
+}
+
+.heading {
+  @apply pr-12 font-heading text-2xl font-bold text-text-primary;
+}
+
+.subtitle {
+  @apply mt-1 text-sm text-text-secondary;
+}
+
+.grid {
+  @apply mt-6 grid gap-4 sm:grid-cols-2;
+}
+
+.card {
+  @apply flex flex-col overflow-hidden rounded-xl border border-border bg-bg;
+}
+
+.thumbnail {
+  @apply relative flex aspect-video items-center justify-center overflow-hidden border-b border-border bg-bg-elevated-hover text-text-muted;
+}
+
+/* Fondo: misma imagen recortada y difuminada para teñir las bandas laterales. */
+.thumbnail-backdrop {
+  @apply scale-110 object-cover opacity-0 blur-xl transition-opacity duration-500 ease-out;
+}
+
+/* Imagen de vista previa del certificado (.webp junto al .pdf). */
+.thumbnail-preview {
+  @apply relative object-contain opacity-0 transition-opacity duration-500 ease-out;
+}
+
+.thumbnail[data-loaded="true"] .thumbnail-backdrop,
+.thumbnail[data-loaded="true"] .thumbnail-preview {
+  @apply opacity-100;
+}
+
+/* Placeholder mientras carga la imagen: tapa las dos capas y barre un brillo. */
+.thumbnail-skeleton {
+  @apply absolute inset-0 z-10 bg-bg-elevated-hover transition-opacity duration-500 ease-out;
+}
+
+/* Ya cargó: se desvanece sobre la imagen (fundido cruzado) y deja de animar. */
+.thumbnail[data-loaded="true"] .thumbnail-skeleton {
+  @apply pointer-events-none opacity-0;
+}
+
+.thumbnail[data-loaded="true"] .thumbnail-skeleton::after {
+  animation: none;
+}
+
+.thumbnail-skeleton::after {
+  @apply absolute inset-0;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 0.06) 50%,
+    transparent 100%
+  );
+  animation: thumbnail-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes thumbnail-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Sin animación si el usuario pide menos movimiento: queda el bloque plano. */
+@media (prefers-reduced-motion: reduce) {
+  .thumbnail-skeleton::after {
+    animation: none;
+  }
+}
+
+.card-body {
+  @apply flex flex-1 flex-col gap-1 p-4;
+}
+
+.card-title {
+  @apply font-heading text-sm font-semibold text-text-primary;
+}
+
+.card-meta {
+  @apply mt-0.5 flex items-center gap-2 text-xs;
+}
+
+/* Plataforma: destacada con color de acento y peso. */
+.card-issuer {
+  @apply font-semibold text-accent-text;
+}
+
+/* Fecha: chip apagado para diferenciarla de la plataforma. */
+.card-date {
+  @apply rounded-full border border-border px-2 py-0.5 text-[11px] text-text-secondary;
+}
+
+.card-actions {
+  @apply mt-3 flex items-center gap-2;
+}
+
+.card-download {
+  @apply inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-border px-3 py-2 text-xs font-semibold text-text-primary hover:border-accent hover:text-accent-text;
+  transition:
+    color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-download:active,
+.card-verify:active {
+  transform: scale(0.95);
+  transition-duration: 0.1s;
+}
+
+.card-verify {
+  @apply flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-lg border border-border text-text-secondary hover:border-accent hover:text-accent-text;
+  transition:
+    color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

@@ -1,0 +1,65 @@
+@reference "../../app/globals.css";
+
+.services {
+  @apply px-6 py-20;
+}
+
+.services__header {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+.services__heading {
+  @apply font-heading text-3xl font-bold text-accent-text;
+}
+
+.services__subtitle {
+  @apply mt-2 text-sm text-text-secondary;
+}
+
+.services__grid {
+  @apply mx-auto mt-12 grid max-w-content gap-6 md:grid-cols-3;
+}
+
+.services__card {
+  @apply overflow-hidden rounded-2xl border border-border bg-bg-elevated;
+}
+
+.services__card-preview {
+  @apply relative aspect-[4/3] w-full overflow-hidden border-b border-border bg-bg;
+}
+
+.services__card-preview-image {
+  @apply h-full w-full object-cover opacity-100 transition-opacity duration-500 ease-in-out;
+}
+
+.services__card-preview-image--hidden {
+  @apply opacity-0;
+}
+
+.services__card-preview-video {
+  @apply absolute inset-0 z-[1] h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-in-out;
+}
+
+.services__card-preview-video--active {
+  @apply opacity-100;
+}
+
+.services__card-icon-badge {
+  @apply absolute left-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-lg;
+}
+
+.services__card-icon {
+  @apply text-accent;
+}
+
+.services__card-content {
+  @apply p-6;
+}
+
+.services__card-title {
+  @apply font-heading text-lg font-semibold text-accent-text;
+}
+
+.services__card-description {
+  @apply mt-2 text-sm leading-relaxed text-text-secondary;
+}

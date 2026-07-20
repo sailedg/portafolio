@@ -1,0 +1,47 @@
+@reference "../../app/globals.css";
+
+.marquee {
+  @apply overflow-hidden border-y border-border py-10;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee__track {
+  @apply flex w-max items-center;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee__track:hover {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  @apply relative mr-16 flex items-center justify-center;
+}
+
+.marquee__icon {
+  @apply h-8 w-8 text-text-muted transition-colors duration-200 sm:h-10 sm:w-10;
+}
+
+.marquee__item:hover .marquee__icon {
+  @apply text-text-primary;
+}
+
+.marquee__tooltip {
+  @apply pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-bg-elevated px-2.5 py-1 text-xs text-text-primary opacity-0 shadow-lg transition-opacity duration-200;
+}
+
+.marquee__item:hover .marquee__tooltip {
+  @apply opacity-100;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  /* -1/6: justo el ancho de un set repetido (se renderizan 6 copias), así el
+     loop reinicia en un borde exacto del contenido, sin costura visible. */
+  100% {
+    transform: translateX(-16.6667%);
+  }
+}

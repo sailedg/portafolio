@@ -1,0 +1,136 @@
+@reference "../../app/globals.css";
+
+.navbar {
+  @apply sticky top-0 z-50 border-b border-transparent transition-colors duration-300;
+}
+
+.navbar--scrolled {
+  @apply border-border bg-bg/80 backdrop-blur-md;
+}
+
+.navbar__inner {
+  @apply flex w-full items-center justify-between px-8 py-5;
+}
+
+.navbar__logo {
+  @apply font-heading text-2xl font-bold text-text-primary;
+}
+
+.navbar__logo-accent {
+  @apply text-accent-text;
+}
+
+.navbar__links {
+  @apply hidden items-center gap-10 md:flex;
+}
+
+.navbar__link {
+  @apply text-base text-text-secondary transition-colors hover:text-text-primary;
+}
+
+.navbar__link--active {
+  @apply text-accent-text hover:text-accent-text;
+}
+
+.navbar__actions {
+  @apply flex items-center gap-2 sm:gap-4;
+}
+
+.navbar__icon-button {
+  @apply flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm text-text-secondary hover:border-accent hover:bg-bg-elevated hover:text-text-primary sm:px-4;
+  transition:
+    background-color 0.2s ease-out,
+    color 0.2s ease-out,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar__icon-button:active {
+  transform: scale(0.95);
+  transition-duration: 0.1s;
+}
+
+.navbar__language {
+  @apply relative;
+}
+
+.navbar__chevron {
+  @apply transition-transform duration-200;
+}
+
+.navbar__chevron--open {
+  @apply rotate-180;
+}
+
+.navbar__language-menu {
+  @apply absolute right-0 top-full z-10 mt-2 w-full overflow-hidden rounded-xl border border-border bg-bg-elevated py-1 shadow-lg;
+}
+
+.navbar__language-option {
+  @apply flex w-full items-center justify-between gap-2 px-4 py-2.5 text-left text-sm text-text-secondary transition-colors hover:bg-bg-elevated-hover hover:text-text-primary disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-text-secondary;
+}
+
+.navbar__language-badge {
+  @apply rounded-full bg-bg px-1.5 py-0.5 text-xs text-text-muted;
+}
+
+.navbar__theme-switch {
+  @apply flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full border border-border p-0.5 hover:border-accent;
+  transition:
+    border-color 0.2s ease-out,
+    transform 0.15s ease-out;
+}
+
+.navbar__theme-switch:active {
+  transform: scale(0.93);
+}
+
+.navbar__theme-thumb {
+  @apply flex h-6 w-6 items-center justify-center rounded-full bg-bg-elevated-hover text-text-secondary transition-transform duration-300;
+}
+
+[data-theme="dark"] .navbar__theme-thumb {
+  @apply translate-x-5 bg-accent text-accent-foreground;
+}
+
+.navbar__theme-icon {
+  @apply flex transition-transform duration-300 ease-out;
+}
+
+/* 360deg (no 180) para que el icono siempre quede derecho. En reposo rotate(360deg)
+   se ve igual que rotate(0deg), pero la transición entre ambos igual hace un giro
+   completo, alternando dirección en cada toggle (0→360, luego 360→0, etc.). */
+[data-theme="dark"] .navbar__theme-icon {
+  transform: rotate(360deg);
+}
+
+/* Moon y Sun siempre están en el DOM (ver Navbar.tsx); solo se muestra uno,
+   según [data-theme] en <html>, que ya viene correcto antes del primer paint
+   (ver el script de init en layout.tsx). Así el árbol es igual en server y
+   cliente y no hay hydration mismatch. */
+.navbar__theme-icon--moon,
+.navbar__theme-icon--sun {
+  display: none;
+}
+
+[data-theme="dark"] .navbar__theme-icon--moon,
+[data-theme="light"] .navbar__theme-icon--sun {
+  display: block;
+}
+
+.navbar__mobile-tabbar {
+  @apply sticky z-40 flex items-stretch justify-around border-t border-border bg-bg/95 backdrop-blur-md md:hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+  bottom: -2px;
+}
+
+.navbar__tab {
+  @apply flex flex-1 flex-col items-center justify-center gap-1 py-2.5 text-text-muted transition-colors;
+}
+
+.navbar__tab--active {
+  @apply text-accent-text;
+}
+
+.navbar__tab-label {
+  @apply text-[11px] font-medium;
+}

@@ -1,0 +1,17 @@
+@reference "../../app/globals.css";
+
+.watermark-wrap {
+  @apply relative overflow-hidden;
+}
+
+.watermark {
+  @apply pointer-events-none absolute right-0 top-0 z-0 hidden whitespace-nowrap font-heading font-extrabold leading-none text-text-primary opacity-[0.12] md:block;
+  writing-mode: sideways-lr;
+  text-orientation: mixed;
+  font-size: clamp(10rem, 30vw, 40rem);
+  transform: translateX(30%);
+}
+
+.watermark__accent {
+  @apply text-accent-text;
+}

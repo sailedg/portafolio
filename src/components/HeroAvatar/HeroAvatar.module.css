@@ -1,0 +1,98 @@
+@reference "../../app/globals.css";
+
+/* El ancho de aquí manda: hexágonos, sombra, foto y partículas se dimensionan
+   en % sobre esta caja, así que basta tocar este max-width para escalar todo. */
+.hero-avatar {
+  @apply relative mx-auto w-full max-w-[21rem];
+  aspect-ratio: 470 / 640;
+  margin-left: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .hero-avatar {
+    margin-left: auto;
+  }
+}
+
+/* En pantallas chicas el ancho lo marcaba el contenedor (w-full), no el
+   max-width de arriba, así que aquí lo bajo en proporción. */
+@media (max-width: 459px) {
+  .hero-avatar {
+    max-width: 82%;
+  }
+}
+
+.hero-avatar__vector {
+  @apply pointer-events-none absolute -z-10;
+  overflow: visible;
+  width: 106.17%;
+  height: auto;
+  left: -9.787%;
+  bottom: 0;
+}
+
+.hero-avatar__vector-dot {
+  filter: drop-shadow(0 0 3px var(--color-accent-text));
+}
+
+.hero-avatar__sombra {
+  @apply absolute z-0;
+  width: 92%;
+  height: auto;
+  left: 4.8936%;
+  bottom: 2.1875%;
+}
+
+.hero-avatar__fondo {
+  @apply absolute z-10;
+  width: 91%;
+  height: auto;
+  left: 2.766%;
+  bottom: 0;
+  filter: drop-shadow(0 0 20px color-mix(in srgb, var(--color-accent) 28%, transparent)) drop-shadow(0 0 45px color-mix(in srgb, var(--color-accent) 14%, transparent));
+}
+
+.hero-avatar__photo-wrap {
+  @apply absolute inset-0 z-20 h-full w-full;
+}
+
+.hero-avatar__particles {
+  @apply pointer-events-none absolute z-30;
+  inset: -12%;
+}
+
+.hero-avatar__particle-wrap {
+  @apply absolute;
+  transform: translate(calc(var(--pointer-x, 0) * var(--depth, 1) * 3px),
+      calc(var(--pointer-y, 0) * var(--depth, 1) * 3px));
+}
+
+.hero-avatar__particle {
+  @apply block rounded-full;
+  background: var(--color-accent-text);
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Solo un movimiento suave decorativo, sin parpadeos, así que lo dejo incluso con reduced-motion. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-avatar__particle {
+    animation-duration: 7s !important;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate(var(--float-x, 6px), var(--float-y, -10px));
+    opacity: 0.85;
+  }
+}

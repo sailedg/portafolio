@@ -1,0 +1,185 @@
+@reference "../../app/globals.css";
+
+.about {
+  @apply px-6 py-20;
+}
+
+.about__grid {
+  @apply mx-auto grid max-w-content gap-16 md:grid-cols-2;
+}
+
+.about__heading {
+  @apply font-heading text-3xl font-bold text-text-primary;
+}
+
+.about__heading-accent {
+  @apply text-accent-text;
+}
+
+.about__bio {
+  @apply mt-5 leading-relaxed text-text-secondary;
+}
+
+.about__languages {
+  @apply mt-6 flex flex-wrap gap-4 text-sm text-text-secondary;
+}
+
+.about__language-level {
+  @apply ml-2 rounded-full bg-bg-elevated px-2 py-0.5 text-xs text-accent-text;
+}
+
+.about__ctas {
+  @apply mt-8 flex flex-wrap gap-3;
+}
+
+.about__cta--primary {
+  @apply inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease-out;
+}
+
+.about__cta--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-accent) 50%, transparent);
+}
+
+.about__cta--primary:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.about__cta--secondary {
+  @apply inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-semibold text-text-primary;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.25s ease-out,
+    background-color 0.25s ease-out;
+}
+
+.about__cta--secondary:hover {
+  @apply border-accent bg-bg-elevated;
+  transform: translateY(-2px);
+}
+
+.about__cta--secondary:hover .about__cta--secondary-icon {
+  transform: translateY(2px);
+}
+
+.about__cta--secondary:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.about__cta--secondary-icon {
+  @apply transition-transform duration-300;
+}
+
+@media (max-width: 767px) {
+  .about__content {
+    @apply text-center;
+  }
+
+  .about__bio {
+    @apply mx-auto;
+  }
+
+  .about__languages,
+  .about__ctas {
+    @apply justify-center;
+  }
+}
+
+.skills__heading {
+  @apply flex items-center gap-2 font-mono text-lg font-semibold text-text-primary;
+}
+
+.skills__heading-bracket {
+  @apply text-accent-text;
+}
+
+.skills__subtitle {
+  @apply mt-1 font-mono text-xs text-text-muted;
+}
+
+.skills__row--top {
+  @apply mt-6 grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-[0.55fr_1fr];
+}
+
+.skills__row--middle {
+  @apply mt-6;
+}
+
+.skills__row--bottom {
+  @apply mt-6 grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-[2.6fr_0.8fr];
+}
+
+.skills__category-title {
+  @apply mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary;
+}
+
+.skills__list {
+  @apply grid items-start justify-items-start gap-1.5;
+}
+
+.skills__list--cols-1 {
+  grid-template-columns: max-content;
+}
+
+.skills__list--cols-2 {
+  grid-template-columns: max-content;
+}
+
+.skills__list--cols-3 {
+  grid-template-columns: max-content;
+}
+
+@media (min-width: 640px) {
+  .skills__list--cols-2,
+  .skills__list--cols-3 {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
+@media (min-width: 768px) {
+  .skills__list--cols-3 {
+    grid-template-columns: repeat(3, max-content);
+  }
+}
+
+/* Al revés de lo normal: una sola línea mientras su fila está apilada (ancho
+   completo), y colapsa a una columna cuando en lg la fila se divide y comparte
+   espacio con Herramientas. */
+.skills__list--expand-when-stacked {
+  grid-template-columns: repeat(3, max-content);
+}
+
+@media (min-width: 1024px) {
+  .skills__list--expand-when-stacked {
+    grid-template-columns: max-content;
+  }
+}
+
+.skills__badge {
+  @apply flex w-fit items-center gap-1.5 whitespace-nowrap rounded-lg border border-border bg-bg-elevated px-2 py-1.5 text-xs text-text-secondary;
+}
+
+/* Debajo de 768px saco la grilla de columnas fijas: los tags fluyen de
+   izquierda a derecha y bajan de línea cuando hace falta. */
+@media (max-width: 767px) {
+  .skills__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .skills__content {
+    @apply text-center;
+  }
+
+  .skills__heading,
+  .skills__category-title,
+  .skills__list {
+    @apply justify-center;
+  }
+}

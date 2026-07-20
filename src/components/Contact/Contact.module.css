@@ -1,0 +1,208 @@
+@reference "../../app/globals.css";
+
+.contact {
+  @apply px-6 py-20;
+}
+
+.contact__panel {
+  @apply relative mx-auto grid max-w-5xl gap-10 overflow-hidden rounded-2xl border border-border p-8 md:grid-cols-2 md:p-10;
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 0%, var(--color-glow), transparent 70%),
+    linear-gradient(to top, var(--color-bg-elevated) 0%, var(--color-panel-gradient-top) 100%);
+}
+
+/* Proporciones sacadas del diseño original (caja de 942x374) y pasadas a
+   porcentajes de esa caja, así mantienen la misma relación en cualquier tamaño
+   de panel. */
+.contact__watermark-airplane {
+  @apply pointer-events-none absolute left-0 z-0 max-w-none;
+  height: 40%;
+  width: auto;
+  bottom: -5.882%;
+}
+
+@media (min-width: 768px) {
+  .contact__watermark-airplane {
+    height: 80%;
+  }
+}
+
+/* El fill del SVG es un gris casi blanco al 3%: no se ve contra el panel casi
+   blanco del tema claro, así que lo invierto a oscuro en vez de tocar el asset
+   (mismo truco que las líneas de abajo). */
+[data-theme="light"] .contact__watermark-airplane {
+  filter: invert(1);
+}
+
+.contact__watermark-lines {
+  @apply pointer-events-none absolute z-0 hidden max-w-none opacity-70 md:block;
+  width: 100%;
+  height: 100%;
+  right: -30.573%;
+  bottom: -18.984%;
+  transform: scale(0.7);
+}
+
+/* Los trazos del SVG son blancos fijos: invisibles sobre el panel casi blanco
+   del tema claro, así que los invierto a oscuro en vez de tocar el asset. */
+[data-theme="light"] .contact__watermark-lines {
+  filter: invert(1);
+}
+
+.contact__form {
+  @apply relative z-10 order-2 md:order-1;
+}
+
+.contact__info-column {
+  @apply relative z-10 order-1 md:order-2;
+}
+
+.contact__field {
+  @apply mb-4;
+}
+
+.contact__label {
+  @apply mb-1.5 block text-sm text-text-secondary;
+}
+
+/* El borde de acento acompaña al foco del mouse; el anillo de :focus-visible de
+   globals.css es el que marca la posición al navegar con teclado. */
+.contact__input {
+  @apply w-full rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent;
+}
+
+.contact__textarea {
+  @apply w-full resize-none rounded-lg border border-border bg-bg px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent;
+}
+
+/* Campo rechazado por el servidor: borde rojo además del mensaje de error. */
+.contact__input[aria-invalid="true"],
+.contact__textarea[aria-invalid="true"] {
+  @apply border-red-500/70;
+}
+
+.contact__row {
+  @apply grid gap-4 sm:grid-cols-2;
+}
+
+.contact__honeypot {
+  @apply absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0;
+}
+
+.contact__submit-row {
+  @apply flex flex-col gap-3 sm:flex-row;
+}
+
+.contact__submit {
+  @apply inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease-out;
+}
+
+.contact__submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-accent) 50%, transparent);
+}
+
+.contact__submit:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.contact__submit--whatsapp {
+  @apply inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 text-sm font-semibold text-black sm:w-auto;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease-out;
+}
+
+.contact__submit--whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px rgba(37, 211, 102, 0.5);
+}
+
+.contact__submit--whatsapp:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.contact__status {
+  @apply mt-3 text-sm;
+}
+
+.contact__status--success {
+  @apply text-accent-text;
+}
+
+.contact__status--error {
+  @apply text-red-400;
+}
+
+.contact__badge {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-text-secondary;
+}
+
+.contact__heading {
+  @apply mt-4 font-heading text-3xl font-bold text-accent-text sm:text-4xl;
+}
+
+.contact__description {
+  @apply mt-3 text-sm leading-relaxed text-text-secondary;
+}
+
+.contact__info-list {
+  @apply mt-6 flex flex-col gap-3 text-sm text-text-secondary;
+}
+
+.contact__info-item {
+  @apply flex items-center justify-between gap-2.5;
+}
+
+.contact__info-main {
+  @apply flex items-center gap-2.5;
+}
+
+.contact__copy-button {
+  @apply flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-text-muted hover:text-accent-text;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.2s ease-out;
+}
+
+.contact__copy-button:hover {
+  transform: scale(1.15);
+}
+
+.contact__copy-button:active {
+  transform: scale(0.88);
+  transition-duration: 0.1s;
+}
+
+.contact__social {
+  @apply mt-8 flex items-center gap-4;
+}
+
+.contact__social-label {
+  @apply font-heading text-base font-semibold text-accent-text;
+}
+
+.contact__social-links {
+  @apply flex items-center gap-3;
+}
+
+.contact__social-link {
+  @apply flex h-8 w-8 items-center justify-center rounded-full bg-white text-black;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact__social-link:hover {
+  transform: scale(1.12) translateY(-1px);
+}
+
+.contact__social-link:active {
+  transform: scale(0.9);
+  transition-duration: 0.1s;
+}
