@@ -21,7 +21,9 @@
   --color-accent-text: #c8f224;
   --color-text-primary: #ffffff;
   --color-text-secondary: #9ca3af;
-  --color-text-muted: #6b7280;
+  /* 4.78:1 sobre el fondo. El #6b7280 anterior daba 4.10:1 y no llegaba al
+     4.5:1 que pide WCAG AA para texto pequeño. */
+  --color-text-muted: #767d8a;
   --color-glow: rgba(255, 255, 255, 0.09);
   --color-panel-gradient-top: #333333;
   /* Caras del cubo giratorio de testimonios. Uso un par propio (y no
@@ -41,7 +43,8 @@
   --color-accent-text: #5c7109;
   --color-text-primary: #14140f;
   --color-text-secondary: #52524a;
-  --color-text-muted: #7a7a70;
+  /* 4.66:1 sobre el fondo claro; el #7a7a70 anterior se quedaba en 4.04:1. */
+  --color-text-muted: #707066;
   --color-glow: rgba(0, 0, 0, 0.05);
   --color-panel-gradient-top: #e8e8e4;
   --color-face-a: #ffffff;

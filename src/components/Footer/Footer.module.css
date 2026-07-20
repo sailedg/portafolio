@@ -8,6 +8,8 @@
   @apply mx-auto flex max-w-content flex-col items-center justify-between gap-2 text-center text-[11px] text-text-muted sm:flex-row sm:text-xs;
 }
 
+/* Subrayado siempre visible: si el enlace solo se distinguiera por el color,
+   no lo percibiría quien no distingue bien los colores. */
 .footer__link {
-  @apply text-accent-text transition-colors hover:underline;
+  @apply text-accent-text underline underline-offset-2 transition-colors;
 }
