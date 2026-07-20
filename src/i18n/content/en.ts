@@ -129,6 +129,8 @@ export const en: SiteContent = {
     featuredBadge: "Featured",
     ribbon: "Featured",
     cardLink: "View project",
+    imageAria: (name) => `Enlarge the image of ${name}`,
+    imageClose: "Close image",
     more: "View more projects",
     less: "View fewer projects",
     featured: {

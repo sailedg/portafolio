@@ -50,7 +50,7 @@
 }
 
 .projects__featured-preview {
-  @apply relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-border bg-gradient-to-br from-bg to-bg-elevated-hover;
+  @apply relative flex aspect-video w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-xl border border-border bg-gradient-to-br from-bg to-bg-elevated-hover;
 }
 
 .projects__featured-preview-image {
@@ -120,7 +120,7 @@
 
 /* Contenedor sin recorte: deja que el zoom escape los límites de la card. */
 .projects__card-preview-wrap {
-  @apply relative -mx-5 -mt-5 mb-5;
+  @apply relative -mx-5 -mt-5 mb-5 block w-[calc(100%+2.5rem)] cursor-zoom-in text-left;
 }
 
 .projects__card-preview {
@@ -136,14 +136,18 @@
   @apply pointer-events-none absolute inset-0 z-40 origin-center scale-95 overflow-hidden rounded-lg border border-border opacity-0 shadow-2xl transition-[opacity,transform] duration-300 ease-out;
 }
 
-.projects__card:hover .projects__card-zoom {
-  @apply scale-[1.55] opacity-100;
+/* Solo en dispositivos con puntero real: en táctil el zoom se quedaría pegado
+   tras el toque, y ahí la ampliación la resuelve el visor a pantalla completa. */
+@media (hover: hover) {
+  .projects__card-preview-wrap:hover .projects__card-zoom {
+    @apply scale-[1.55] opacity-100;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
   .projects__card-zoom,
-  .projects__card:hover .projects__card-zoom {
+  .projects__card-preview-wrap:hover .projects__card-zoom {
     @apply scale-100 transition-none;
   }
 }

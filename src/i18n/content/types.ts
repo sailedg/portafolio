@@ -95,6 +95,8 @@ export type SiteContent = {
     featuredBadge: string;
     ribbon: string;
     cardLink: string;
+    imageAria: (name: string) => string;
+    imageClose: string;
     more: string;
     less: string;
     featured: Project;

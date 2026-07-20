@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, FolderGit2, Star } from "lucide-react";
 import { useContent } from "@/i18n/LanguageProvider";
 import type { StaticImageData } from "next/image";
 import type { Project } from "@/i18n/content/types";
 import { featuredImage, gridImages } from "@/data/projects";
+import { ImageLightbox } from "@/components/ImageLightbox/ImageLightbox";
 import { revealStagger, useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import styles from "./Projects.module.css";
 
@@ -34,6 +35,8 @@ function ProjectGridCard({
 }) {
   const content = useContent();
   const { ref: revealRef, isVisible: isRevealVisible } = useRevealOnScroll<HTMLElement>();
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const previewButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <article
@@ -42,7 +45,13 @@ function ProjectGridCard({
       className={`${styles.projects__card} reveal`}
       style={revealStagger(index)}
     >
-      <div className={styles["projects__card-preview-wrap"]}>
+      <button
+        type="button"
+        ref={previewButtonRef}
+        onClick={() => setIsLightboxOpen(true)}
+        aria-label={content.projects.imageAria(project.name)}
+        className={styles["projects__card-preview-wrap"]}
+      >
         <div className={styles["projects__card-preview"]}>
           <Image
             src={image}
@@ -64,7 +73,16 @@ function ProjectGridCard({
             sizes="(max-width: 768px) 70vw, 40vw"
           />
         </div>
-      </div>
+      </button>
+
+      <ImageLightbox
+        src={image}
+        alt={project.imageAlt}
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        closeLabel={content.projects.imageClose}
+        triggerRef={previewButtonRef}
+      />
       <h3 className={styles["projects__card-title"]}>{project.name}</h3>
       <p className={styles["projects__card-description"]}>
         {renderRichText(project.description)}
@@ -209,6 +227,8 @@ export function Projects() {
   const content = useContent();
   const { featured: featuredProject, grid: gridProjects } = content.projects;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isFeaturedLightboxOpen, setIsFeaturedLightboxOpen] = useState(false);
+  const featuredButtonRef = useRef<HTMLButtonElement>(null);
   const { ref: headerRef, isVisible: isHeaderVisible } = useRevealOnScroll<HTMLDivElement>();
   const { ref: featuredRef, isVisible: isFeaturedVisible } = useRevealOnScroll<HTMLElement>();
 
@@ -233,7 +253,13 @@ export function Projects() {
         data-visible={isFeaturedVisible}
         className={`${styles.projects__featured} reveal`}
       >
-        <div className={styles["projects__featured-preview"]}>
+        <button
+          type="button"
+          ref={featuredButtonRef}
+          onClick={() => setIsFeaturedLightboxOpen(true)}
+          aria-label={content.projects.imageAria(featuredProject.name)}
+          className={styles["projects__featured-preview"]}
+        >
           <div className={styles["projects__featured-preview-dots"]}>
             <span className={styles["projects__featured-preview-dot"]} />
             <span className={styles["projects__featured-preview-dot"]} />
@@ -246,7 +272,16 @@ export function Projects() {
             className={styles["projects__featured-preview-image"]}
             sizes="(max-width: 768px) 90vw, 45vw"
           />
-        </div>
+        </button>
+
+        <ImageLightbox
+          src={featuredImage}
+          alt={featuredProject.imageAlt}
+          isOpen={isFeaturedLightboxOpen}
+          onClose={() => setIsFeaturedLightboxOpen(false)}
+          closeLabel={content.projects.imageClose}
+          triggerRef={featuredButtonRef}
+        />
 
         <div className={styles["projects__featured-content"]}>
           <span className={styles.projects__badge}>
