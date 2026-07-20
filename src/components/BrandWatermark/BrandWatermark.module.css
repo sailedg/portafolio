@@ -1,17 +1,28 @@
 @reference "../../app/globals.css";
 
+/* clip y no hidden: hidden recorta pero deja un contenedor desplazable, así que
+   el navegador puede desplazarlo (al enfocar algo, al saltar a un ancla o desde
+   DevTools) y correr todo el contenido de lado. clip no permite ese scroll. */
 .watermark-wrap {
-  @apply relative overflow-hidden;
+  @apply relative;
+  overflow: clip;
 }
 
+/* El SVG ya viene en vertical, así que no hace falta writing-mode. El ancho
+   equivale a la altura de mayúscula que antes daba el font-size, de ahí que la
+   escala sea ~0.7 de aquel valor. */
 .watermark {
-  @apply pointer-events-none absolute right-0 top-0 z-0 hidden whitespace-nowrap font-heading font-extrabold leading-none text-text-primary opacity-[0.12] md:block;
-  writing-mode: sideways-lr;
-  text-orientation: mixed;
-  font-size: clamp(10rem, 30vw, 40rem);
-  transform: translateX(30%);
+  @apply pointer-events-none absolute right-0 top-0 z-0 hidden h-auto opacity-[0.12] md:block;
+  width: clamp(6.7rem, 20.1vw, 26.8rem);
+  transform: translateX(22%);
+}
+
+/* Colores desde los tokens: así el logotipo sigue al tema claro y oscuro, cosa
+   que un SVG con los colores incrustados no haría. */
+.watermark__base {
+  fill: var(--color-text-primary);
 }
 
 .watermark__accent {
-  @apply text-accent-text;
+  fill: var(--color-accent-text);
 }
