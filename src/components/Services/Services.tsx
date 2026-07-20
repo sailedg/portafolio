@@ -110,7 +110,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           src={previewVideoByServiceId[service.id]}
           muted
           playsInline
-          preload="metadata"
+          // No se pide nada hasta que la tarjeta entra en viewport y arranca la
+          // reproducción; mientras tanto se ve la imagen estática de detrás.
+          preload="none"
           aria-hidden="true"
           onEnded={stopAndShowImage}
           className={
