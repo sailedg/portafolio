@@ -133,8 +133,7 @@ export function HeroAvatar() {
         <Image
           src={avatarImage}
           alt="Elias Rodas, desarrollador frontend"
-          fill
-          className="object-fill"
+          className={styles["hero-avatar__photo"]}
           priority
           sizes="(max-width: 459px) 75vw, (max-width: 768px) 60vw, 336px"
         />

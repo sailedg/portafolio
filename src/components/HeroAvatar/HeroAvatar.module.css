@@ -53,8 +53,16 @@
   filter: drop-shadow(0 0 20px color-mix(in srgb, var(--color-accent) 28%, transparent)) drop-shadow(0 0 45px color-mix(in srgb, var(--color-accent) 14%, transparent));
 }
 
+/* Anclado abajo y con la altura que pida la foto. La imagen es 450x645 y la
+   caja 470x640: forzarla a la caja la ensanchaba un 5%. Respetando su
+   proporción, el borde inferior (el que encaja con el hexágono) queda en el
+   mismo sitio y solo la cabeza sube unos píxeles. */
 .hero-avatar__photo-wrap {
-  @apply absolute inset-0 z-20 h-full w-full;
+  @apply absolute inset-x-0 bottom-0 z-20;
+}
+
+.hero-avatar__photo {
+  @apply h-auto w-full;
 }
 
 .hero-avatar__particles {
