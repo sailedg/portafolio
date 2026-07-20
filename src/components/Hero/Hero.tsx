@@ -21,11 +21,16 @@ const STAT_ANIMATION_MS = 1200;
 const TYPEWRITER_TYPE_MS = 65;
 const TYPEWRITER_DELETE_MS = 35;
 const TYPEWRITER_HOLD_MS = 2800;
+// El primer texto es el rol principal, así que se sostiene bastante más que el
+// resto del ciclo para que dé tiempo de leerlo antes del primer borrado.
+const TYPEWRITER_FIRST_HOLD_MS = 6000;
 const TYPEWRITER_GAP_MS = 400;
 
-// Va escribiendo y borrando cada texto en bucle.
+// Va escribiendo y borrando cada texto en bucle. Arranca con el primer texto ya
+// escrito: así se pinta con el HTML del servidor (es el elemento que marca el
+// LCP) y no queda un hueco vacío hasta que hidrata el JS.
 function TypewriterRole({ texts, isActive }: { texts: string[]; isActive: boolean }) {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(texts[0] ?? "");
 
   useEffect(() => {
     if (!isActive) return;
@@ -37,8 +42,9 @@ function TypewriterRole({ texts, isActive }: { texts: string[]; isActive: boolea
       return;
     }
 
+    // Empieza donde lo dejó el render inicial: primer texto completo.
     let textIndex = 0;
-    let charIndex = 0;
+    let charIndex = texts[0]?.length ?? 0;
     let timeoutId: ReturnType<typeof setTimeout>;
 
     const type = () => {
@@ -63,7 +69,8 @@ function TypewriterRole({ texts, isActive }: { texts: string[]; isActive: boolea
       }
     };
 
-    timeoutId = setTimeout(type, TYPEWRITER_TYPE_MS);
+    // El ciclo arranca esperando sobre el texto ya escrito, no tecleándolo.
+    timeoutId = setTimeout(erase, TYPEWRITER_FIRST_HOLD_MS);
 
     return () => clearTimeout(timeoutId);
   }, [isActive, texts]);
@@ -138,9 +145,6 @@ function AnimatedStat({
 
 export function Hero() {
   const { locale, content } = useLanguage();
-  const { ref: contentRef, isVisible: isContentVisible } = useRevealOnScroll<HTMLDivElement>({
-    threshold: 0,
-  });
   const { ref: avatarRef, isVisible: isAvatarVisible } = useRevealOnScroll<HTMLDivElement>({
     threshold: 0,
   });
@@ -153,11 +157,9 @@ export function Hero() {
   return (
     <section id="inicio" className={styles.hero} aria-label={content.hero.aria}>
       <div className={styles.hero__grid}>
-        <div
-          ref={contentRef}
-          data-visible={isContentVisible}
-          className={`${styles.hero__content} reveal`}
-        >
+        {/* Sin .reveal: este bloque ya está a la vista al cargar, así que el
+            fade solo retrasaba el pintado del texto que marca el LCP. */}
+        <div className={styles.hero__content}>
           <span className={styles.hero__badge}>
             <GreetingIcon width={14} height={14} className={styles["hero__badge-icon"]} aria-hidden="true" />
             {content.hero.greeting}
@@ -171,7 +173,7 @@ export function Hero() {
             <span className={styles["hero__title-role"]}> — {content.metadata.title}</span>
           </h1>
           <p className={styles.hero__role}>
-            <TypewriterRole key={locale} texts={content.hero.roleTexts} isActive={isContentVisible} />
+            <TypewriterRole key={locale} texts={content.hero.roleTexts} isActive />
           </p>
           <p className={styles.hero__bio}>{content.hero.bio}</p>
 
